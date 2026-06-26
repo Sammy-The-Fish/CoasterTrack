@@ -1,0 +1,188 @@
+
+for (i = 0 to bottomAppBarItems.length - 1) do
+    NavigationBarItem(
+        // only show as selected if tab selected
+        selected = (selectedItem == i),
+        //set tab to be selected if clicked
+        onClick = {selectedItem = i),
+
+        icon = {
+            // use selected icon if selected
+            if (selectedIcon == i) then
+                Icon(
+                    imageVector = bottomAppBarItems[i].selectedIcon
+                )
+            else
+                Icon(
+                    imageVector = bottomAppBarItems[i].unSelectedIcon
+                )
+            then
+        },
+        label = {
+            // set label to be indexes title
+            Text(text = bottomAppBarItems[i].title
+        }
+endfor
+
+
+
+function rollercoasterToEntity(data)
+
+    // create list of statistics which values can be null
+    tempStatistics = listOf(
+        new TempStatistic(
+            "Manufacturer",
+            data.make
+        ),
+        new TempStatistic(
+            "Model",
+            data.model
+        ),
+        new TempStatistic(
+            "Model",
+            data.model
+        ),
+        new TempStatistic(
+            "Material",
+            data.material
+        )
+    )
+
+    statistics = []
+
+
+    // convert to a list of statistics which values cannot be null
+    // dont want null statistics, as UI cannot handle them
+    for statistic in tempStatistics do
+        if statistic.value != null then
+            statistics.add(
+                new StatisticEntity(
+                    name = statistic.name,
+                    value = statistic.value
+                )
+            )
+        endif
+    endfor
+
+    pics = []
+
+    if data.pictures != null then
+        for picture in pictures do:
+            pics.add(
+                new PictureEntity (
+                    id = picture.id,
+                    name = picture.name,
+                    copyDate = picture.copyDate,
+                    copyName = picture.copyName,
+                    url = picture.Url
+                )
+            )
+        endfor
+    endif
+
+    return new RollercoasterEntity(
+           name = this .name,
+           id = this.id,
+           height = this.stats?.height?.toDouble(),
+           length = this.stats?.length?.toDouble(),
+           inversions = this.stats?.inversions?.toInt(),
+           speed = this.stats?.speed?.toDouble(),
+           statistics = stats,
+           picture = pics
+       )
+
+endfunction
+
+
+class TempStatistic
+        public name
+        public value
+        procedure new(givenName, givenBreed)
+            name = givenName
+            breed = givenBreed
+        endprocedure
+endclass
+
+kotlinx.serialization.json.internal.JsonDecodingException: Unexpected JSON token at offset 18695: Expected beginning of the string, but got [ at path: $[4].stats.length
+
+
+
+procedure getRollercoastersDetails()
+    // the id could be null therefore must be checked
+    if (id == null) then
+        // if pretty much anything goes wrong, the error type is returns
+        rollercoasterDetails = RollercoasterDetailsUiState.Error
+    else
+        response = getRollercoasterdetailsUsecase.execute()
+        if response != null then
+            rollercoasterDetails.value = RollercoasterDetailsUiState.Success(response.toUiModel())
+            // now rollercoaster details is of type success, we can safely execute getQueueTime()
+            getQueueTime()
+        else
+            rollercoasterDetails = RollercoasterDetailsUiState.Error
+        endif
+    endif
+endprocedure
+
+
+procedure getQueueTime()
+    // as queue times can only be obtained from the API on a park by park basis the park ID must be found
+    // as this is called after getRollercoasterDetails, rollercoasterDetails can be assumed to be of type success
+    parkId = rollercoasterDetails.value.details.parkId
+
+    if parkId == null then
+        queueTime.value = QueueUiState.Error
+        return
+    endif
+
+    response = queueTimeRepository.getParkById(parkId)
+
+    item = null
+
+
+    // check through all places the ride could be
+    for land in response.lands do
+        for ride in land.rides do
+            if ride.id == it then
+                item ride
+            endif
+        endfor
+    endfor
+
+    for ride in response.rides do
+        if ride.id == it then
+            item ride
+        endif
+    endfor
+
+    // if still not found an invalid id has been provided or an error has occurred
+    if item != null then
+        queueTime.value = QueueUiState.Success(
+            QueueUiMode(
+                item.waitTime,
+                item.isOpen
+            )
+        )
+    else
+        queueTime.value = QueueUiState.Error
+    endif
+endprocedure
+
+
+function onRideListChange(newList):
+    for index, ride in rideList do
+        rollercoasterDatabase.updateRanking(ride.id, index)
+       endfor
+endfunction
+
+UPDATE rollercoasters SET ranking = {id} WHERE rideId = {id}
+
+SELECT COUNT(*) FROM rollercoasters
+
+for item in visits do
+    if visits.startTime.before(now) then
+        database.delete(item.id)
+    endif
+endfor
+
+

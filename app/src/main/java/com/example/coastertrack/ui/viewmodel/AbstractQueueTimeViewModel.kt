@@ -1,0 +1,130 @@
+package com.example.coastertrack.ui.viewmodel
+
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.coastertrack.data.model.queueTimes.Ride
+import com.example.coastertrack.data.repository.QueueTimeRepository
+import com.example.coastertrack.data.repository.RcdbRepository
+import com.example.coastertrack.ui.model.queuetimes.NotRollercoasterUiModel
+import com.example.coastertrack.ui.model.queuetimes.QueuesUIModel
+import com.example.coastertrack.ui.model.queuetimes.QueuesUIState
+import com.example.coastertrack.ui.model.queuetimes.RollercoasterUIModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.io.IOException
+
+
+/**
+ * queue time view model with all functionality but obtaining the id is left abstract, to be
+ * implemented by children
+ */
+abstract class AbstractQueueTimeViewModel(
+    private val queueTimeRepository: QueueTimeRepository,
+    private val rcdbRepository: RcdbRepository,
+    val savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+
+    // park id to get queue times for
+    abstract var id: Int?
+
+
+    // Mutable state to hold the current queue item
+    private val _queueTimes = mutableStateOf<QueuesUIState?>(QueuesUIState.Loading)
+
+    // immutable version exposed to UI
+    val queueTimes: State<QueuesUIState?> get() = _queueTimes
+
+
+    // function to repeatedly get queue times
+    fun keepFetchingQueueTimes() {
+        viewModelScope.launch {
+            while (true) {
+                fetchQueueItem()
+                delay(60000)
+            }
+        }
+    }
+
+
+    // function to get queue times from API
+    private fun fetchQueueItem() {
+        if (id == null) return
+        viewModelScope.launch {
+            try {
+                // safe to force this as id cannot be null
+                val response = queueTimeRepository.getParkById(id!!)
+                val rollercoastersDetails = rcdbRepository.getRollercoastersFromParkId(id!!)
+
+                // add all queues from various locations to one list
+                val queues = mutableListOf<Ride>()
+                for (land in response.lands) {
+                    for (ride in land.rides) {
+                        queues.add(ride)
+                    }
+                }
+                for (ride in response.rides) {
+                    queues.add(ride)
+                }
+
+                //sort rides into list of rollercoasters and list of not rollercoasters
+                val rollercoasters = mutableListOf<RollercoasterUIModel>()
+                val notRollercoasters = mutableListOf<NotRollercoasterUiModel>()
+                queues.forEach { ride ->
+                    var found = false
+                    rollercoastersDetails.forEach { rollercoaster ->
+                        if (ride.id == rollercoaster.id) {
+                            rollercoasters.add(
+                                RollercoasterUIModel(
+                                    name = rollercoaster.name,
+                                    queue = ride.waitTime,
+                                    picture = "https://rcdb.com${rollercoaster.mainPicture!!.url}",
+                                    isOpen = ride.isOpen,
+                                    id = ride.id
+                                )
+                            )
+                            found = true
+                        }
+                    }
+                    if (!found) {
+                        notRollercoasters.add(
+                            NotRollercoasterUiModel(
+                                name = ride.name,
+                                queue = ride.waitTime,
+                                isOpen = ride.isOpen,
+                            )
+                        )
+                    }
+                }
+
+                // sort by isOpen then queue times and convert to immutable list
+                val sortedRollercoasters =
+                    rollercoasters.sortedWith(compareBy<RollercoasterUIModel> { !it.isOpen }.thenByDescending { it.queue })
+                        .toList()
+                val sortedNotRollercoasters =
+                    notRollercoasters.sortedWith(compareBy<NotRollercoasterUiModel> { !it.isOpen }.thenByDescending { it.queue })
+                        .toList()
+
+                val result = QueuesUIModel(
+                    rollercoasterQueues = sortedRollercoasters,
+                    notRollercoasterQueues = sortedNotRollercoasters
+                )
+
+                _queueTimes.value = QueuesUIState.Success(result)
+
+            } catch (e: IOException) {
+                // error getting response
+                _queueTimes.value = QueuesUIState.Error
+            }
+        }
+    }
+
+    fun refreshQueueTimes() {
+        _queueTimes.value = QueuesUIState.Loading
+        fetchQueueItem()
+    }
+
+}

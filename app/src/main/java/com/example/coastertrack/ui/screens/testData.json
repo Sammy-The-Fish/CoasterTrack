@@ -1,0 +1,1016 @@
+[
+  {
+    "id": 7977,
+    "name": "Candymonium",
+    "park": {
+      "name": "Hersheypark",
+      "id": 15
+    },
+    "city": "Hershey",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "region": "United States",
+    "link": "/16682.htm",
+    "status": {
+      "state": "Operating",
+      "date": {
+        "opened": "2020-07-03"
+      }
+    },
+    "make": "Bolliger & Mabillard",
+    "model": "All Models",
+    "type": "Steel",
+    "design": "Sit Down",
+    "stats": {
+      "length": "1413.1",
+      "height": "64",
+      "speed": "122.3",
+      "inversions": "0",
+      "verticalAngle": "77.3",
+      "duration": "2:26",
+      "airtimePoints": "7",
+      "elements": "64",
+      "arrangement": "3 trains with 7 cars per train. Riders are arranged 4 across in a single row for a total of 28 riders per train.",
+      "builtBy": "Bolliger & Mabillard"
+    },
+    "mainPicture": {
+      "id": 122125,
+      "name": "Candymonium",
+      "url": "/aagyrda",
+      "copyName": "Patrick R. Wagner",
+      "copyDate": "2020-06-29"
+    },
+    "pictures": [
+      {
+        "id": 122125,
+        "name": "Candymonium",
+        "url": "/aagyrda",
+        "copyName": "Patrick R. Wagner",
+        "copyDate": "2020-06-29"
+      },
+      {
+        "id": 122126,
+        "name": "Candymonium",
+        "url": "/aagyrea",
+        "copyName": "Patrick R. Wagner",
+        "copyDate": "2020-06-29"
+      },
+      {
+        "id": 122159,
+        "name": "Candymonium",
+        "url": "/aagysla",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-07-03"
+      },
+      {
+        "id": 122160,
+        "name": "Candymonium",
+        "url": "/aagysma",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-07-03"
+      },
+      {
+        "id": 129502,
+        "name": "Candymonium",
+        "url": "/aahjowa",
+        "copyName": "Nick Curcio",
+        "copyDate": "2021-08-11"
+      },
+      {
+        "id": 122161,
+        "name": "Candymonium",
+        "url": "/aagysna",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-07-03"
+      },
+      {
+        "id": 122350,
+        "name": "Candymonium",
+        "url": "/aagyzua",
+        "copyName": "Joseph DeRosa",
+        "copyDate": "2020-07-17"
+      },
+      {
+        "id": 122162,
+        "name": "Candymonium",
+        "url": "/aagysoa",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-07-03"
+      },
+      {
+        "id": 122163,
+        "name": "Candymonium",
+        "url": "/aagyspa",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-07-03"
+      },
+      {
+        "id": 122164,
+        "name": "Candymonium",
+        "url": "/aagysqa",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-07-03"
+      },
+      {
+        "id": 115182,
+        "name": "Candymonium",
+        "url": "/aagokca",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 115186,
+        "name": "Candymonium",
+        "url": "/aagokga",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 115183,
+        "name": "Candymonium",
+        "url": "/aagokda",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 125272,
+        "name": "Candymonium",
+        "url": "/aahdiea",
+        "copyName": "Richard Sikes",
+        "copyDate": "2020-07-20"
+      },
+      {
+        "id": 122124,
+        "name": "Candymonium",
+        "url": "/aagyrca",
+        "copyName": "Patrick R. Wagner",
+        "copyDate": "2020-06-29"
+      },
+      {
+        "id": 125273,
+        "name": "Candymonium",
+        "url": "/aahdifa",
+        "copyName": "Richard Sikes",
+        "copyDate": "2020-08-02"
+      },
+      {
+        "id": 125274,
+        "name": "Candymonium",
+        "url": "/aahdiga",
+        "copyName": "Richard Sikes",
+        "copyDate": "2020-08-02"
+      },
+      {
+        "id": 115180,
+        "name": "Candymonium",
+        "url": "/aagokaa",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 115187,
+        "name": "Candymonium",
+        "url": "/aagokha",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 125286,
+        "name": "Candymonium",
+        "url": "/aahdisa",
+        "copyName": "Jack Creegan",
+        "copyDate": "2020-07-16"
+      },
+      {
+        "id": 125287,
+        "name": "Candymonium",
+        "url": "/aahdita",
+        "copyName": "Jack Creegan",
+        "copyDate": "2020-07-16"
+      },
+      {
+        "id": 125288,
+        "name": "Candymonium",
+        "url": "/aahdiua",
+        "copyName": "Jack Creegan",
+        "copyDate": "2020-07-16"
+      },
+      {
+        "id": 115176,
+        "name": "Candymonium",
+        "url": "/aagojwa",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 115188,
+        "name": "Candymonium",
+        "url": "/aagokia",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 115177,
+        "name": "Candymonium",
+        "url": "/aagojxa",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 115184,
+        "name": "Candymonium",
+        "url": "/aagokea",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-07"
+      },
+      {
+        "id": 119842,
+        "name": "Candymonium",
+        "url": "/aagvhia",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-27"
+      },
+      {
+        "id": 119843,
+        "name": "Candymonium",
+        "url": "/aagvhja",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-27"
+      },
+      {
+        "id": 119844,
+        "name": "Candymonium",
+        "url": "/aagvhka",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2020-05-27"
+      },
+      {
+        "id": 121656,
+        "name": "Candymonium",
+        "url": "/aagxzca",
+        "copyName": "Stacey Fake",
+        "copyDate": "2019-12-30"
+      },
+      {
+        "id": 103031,
+        "name": "Candymonium",
+        "url": "/aafwkta",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103032,
+        "name": "Candymonium",
+        "url": "/aafwkua",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103033,
+        "name": "Candymonium",
+        "url": "/aafwkva",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103034,
+        "name": "Candymonium",
+        "url": "/aafwkwa",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103035,
+        "name": "Candymonium",
+        "url": "/aafwkxa",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103036,
+        "name": "Candymonium",
+        "url": "/aafwkya",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103038,
+        "name": "Candymonium",
+        "url": "/aafwlaa",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103039,
+        "name": "Candymonium",
+        "url": "/aafwlba",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103040,
+        "name": "Candymonium",
+        "url": "/aafwlca",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103041,
+        "name": "Candymonium",
+        "url": "/aafwlda",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103043,
+        "name": "Candymonium",
+        "url": "/aafwlfa",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103044,
+        "name": "Candymonium",
+        "url": "/aafwlga",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 103037,
+        "name": "Candymonium",
+        "url": "/aafwkza",
+        "copyName": "Hersheypark",
+        "copyDate": "2019-07-24"
+      },
+      {
+        "id": 121435,
+        "name": "Candymonium",
+        "url": "/aagxqpa",
+        "copyName": "Zach Strasbaugh",
+        "copyDate": "2019-08-21"
+      },
+      {
+        "id": 121436,
+        "name": "Candymonium",
+        "url": "/aagxqqa",
+        "copyName": "Zach Strasbaugh",
+        "copyDate": "2019-08-21"
+      },
+      {
+        "id": 102439,
+        "name": "Candymonium",
+        "url": "/aafvnza",
+        "copyName": "Zach Strasbaugh",
+        "copyDate": "2019-07-05"
+      },
+      {
+        "id": 102438,
+        "name": "Candymonium",
+        "url": "/aafvnya",
+        "copyName": "Zach Strasbaugh",
+        "copyDate": "2019-07-05"
+      },
+      {
+        "id": 100298,
+        "name": "Candymonium",
+        "url": "/aafsjqa",
+        "copyName": "Zach Strasbaugh",
+        "copyDate": "2019-05-04"
+      },
+      {
+        "id": 100297,
+        "name": "Candymonium",
+        "url": "/aafsjpa",
+        "copyName": "Zach Strasbaugh",
+        "copyDate": "2019-05-04"
+      },
+      {
+        "id": 102691,
+        "name": "Candymonium",
+        "url": "/aafvxra",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2019-07-17"
+      },
+      {
+        "id": 102690,
+        "name": "Candymonium",
+        "url": "/aafvxqa",
+        "copyName": "Jason Pennypacker",
+        "copyDate": "2019-07-17"
+      },
+      {
+        "id": 121329,
+        "name": "Candymonium",
+        "url": "/aagxmna",
+        "copyName": "Willow Westervelt",
+        "copyDate": "2019-07-05"
+      }
+    ],
+    "coords": {
+      "lat": "40.286168",
+      "lng": "-76.659476"
+    }
+  },
+  {
+    "id": 6459,
+    "name": "Cocoa Cruiser",
+    "park": {
+      "name": "Hersheypark",
+      "id": 15
+    },
+    "city": "Hershey",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "region": "United States",
+    "link": "/11833.htm",
+    "status": {
+      "state": "Operating",
+      "date": {
+        "opened": "2014-05-10"
+      }
+    },
+    "make": "Zamperla",
+    "model": "Family Coaster",
+    "type": "Steel",
+    "design": "Sit Down",
+    "stats": {
+      "inversions": "0",
+      "elements": "Chain Lift Hill",
+      "arrangement": "Single train with 6 cars. Riders are arranged 2 across in a single row for a total of 12 riders."
+    },
+    "mainPicture": {
+      "id": 53273,
+      "name": "Cocoa Cruiser",
+      "url": "/aadauza",
+      "copyName": "Paul Daley",
+      "copyDate": "2014-06-28"
+    },
+    "pictures": [
+      {
+        "id": 53273,
+        "name": "Cocoa Cruiser",
+        "url": "/aadauza",
+        "copyName": "Paul Daley",
+        "copyDate": "2014-06-28"
+      },
+      {
+        "id": 53274,
+        "name": "Cocoa Cruiser",
+        "url": "/aadavaa",
+        "copyName": "Paul Daley",
+        "copyDate": "2014-06-28"
+      },
+      {
+        "id": 53275,
+        "name": "Cocoa Cruiser",
+        "url": "/aadavba",
+        "copyName": "Paul Daley",
+        "copyDate": "2014-06-28"
+      }
+    ],
+    "coords": {
+      "lat": "40.288433",
+      "lng": "-76.654796"
+    }
+  },
+  {
+    "id": 1993,
+    "name": "Great Bear",
+    "park": {
+      "name": "Hersheypark",
+      "id": 15
+    },
+    "city": "Hershey",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "region": "United States",
+    "link": "/468.htm",
+    "status": {
+      "state": "Operating",
+      "date": {
+        "opened": "1998-05-23"
+      }
+    },
+    "make": "Bolliger & Mabillard",
+    "model": "Inverted Coaster",
+    "type": "Steel",
+    "design": "Inverted",
+    "stats": {
+      "length": "853.4",
+      "height": "27.4",
+      "drop": "37.8",
+      "speed": "93.3",
+      "inversions": "4",
+      "duration": "2:55",
+      "elements": "Chain Lift Hill",
+      "arrangement": "2 trains with 8 cars per train. Riders are arranged 4 across in a single row for a total of 32 riders per train.",
+      "cost": "13000000",
+      "capacity": "1300",
+      "designer": "Ing.-Büro Stengel GmbH"
+    },
+    "mainPicture": {
+      "id": 4844,
+      "name": "Great Bear",
+      "url": "/aaaheia",
+      "copyName": "coasterimage.com",
+      "copyDate": "2002"
+    },
+    "pictures": [
+      {
+        "id": 4844,
+        "name": "Great Bear",
+        "url": "/aaaheia",
+        "copyName": "coasterimage.com",
+        "copyDate": "2002"
+      },
+      {
+        "id": 809,
+        "name": "Great Bear",
+        "url": "/aaabfda",
+        "copyName": "Joe Childs",
+        "copyDate": ""
+      },
+      {
+        "id": 915,
+        "name": "Great Bear",
+        "url": "/aaabjfa",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 916,
+        "name": "Great Bear",
+        "url": "/aaabjga",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 917,
+        "name": "Great Bear",
+        "url": "/aaabjha",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 918,
+        "name": "Great Bear",
+        "url": "/aaabjia",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 4845,
+        "name": "Great Bear",
+        "url": "/aaaheja",
+        "copyName": "coasterimage.com",
+        "copyDate": "2002"
+      },
+      {
+        "id": 4846,
+        "name": "Great Bear",
+        "url": "/aaaheka",
+        "copyName": "coasterimage.com",
+        "copyDate": "2002"
+      },
+      {
+        "id": 8477,
+        "name": "Great Bear",
+        "url": "/aaamoba",
+        "copyName": "Mark Rehak",
+        "copyDate": "2002-06-04"
+      },
+      {
+        "id": 11132,
+        "name": "Great Bear",
+        "url": "/aaaqmea",
+        "copyName": "William Brach",
+        "copyDate": "2004-08"
+      },
+      {
+        "id": 32707,
+        "name": "Great Bear",
+        "url": "/aabwjza",
+        "copyName": "Sean Carr",
+        "copyDate": ""
+      },
+      {
+        "id": 25505,
+        "name": "Great Bear",
+        "url": "/aablsza",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 25506,
+        "name": "Great Bear",
+        "url": "/aabltaa",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 25507,
+        "name": "Great Bear",
+        "url": "/aabltba",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 36971,
+        "name": "Great Bear",
+        "url": "/aaccrza",
+        "copyName": "Cody Risko",
+        "copyDate": "2011"
+      },
+      {
+        "id": 37852,
+        "name": "Great Bear",
+        "url": "/aacdzwa",
+        "copyName": "Harrison L. Michelson",
+        "copyDate": "2006-07-30"
+      },
+      {
+        "id": 80456,
+        "name": "Great Bear",
+        "url": "/aaepama",
+        "copyName": "Joshua Kveragas",
+        "copyDate": ""
+      },
+      {
+        "id": 118871,
+        "name": "Great Bear",
+        "url": "/aagtvza",
+        "copyName": "Malcolm Marr",
+        "copyDate": "2010-06-13"
+      },
+      {
+        "id": 118870,
+        "name": "Great Bear",
+        "url": "/aagtvya",
+        "copyName": "Malcolm Marr",
+        "copyDate": "2006-06-02"
+      },
+      {
+        "id": 118874,
+        "name": "Great Bear",
+        "url": "/aagtwca",
+        "copyName": "Malcolm Marr",
+        "copyDate": "2010-06-13"
+      },
+      {
+        "id": 125291,
+        "name": "Great Bear",
+        "url": "/aahdixa",
+        "copyName": "Jack Creegan",
+        "copyDate": "2020-07-16"
+      },
+      {
+        "id": 142578,
+        "name": "Great Bear",
+        "url": "/aaicxua",
+        "copyName": "Andrew Linton",
+        "copyDate": "2023-05-30"
+      }
+    ],
+    "coords": {
+      "lat": "40.286220",
+      "lng": "-76.653781"
+    }
+  },
+  {
+    "id": 6463,
+    "name": "Laff Trakk",
+    "park": {
+      "name": "Hersheypark",
+      "id": 15
+    },
+    "city": "Hershey",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "region": "United States",
+    "link": "/12270.htm",
+    "status": {
+      "state": "Operating",
+      "date": {
+        "opened": "2015-05-23"
+      }
+    },
+    "make": "Maurer Rides GmbH",
+    "model": "Spinning Coaster",
+    "type": "Steel",
+    "design": "Sit Down",
+    "stats": {
+      "length": "426.7",
+      "speed": "64.4",
+      "inversions": "0",
+      "elements": "Chain Lift Hill",
+      "arrangement": "7 cars. Riders are arranged 2 across in 2 rows for a total of 4 riders per car."
+    },
+    "mainPicture": {
+      "id": 62763,
+      "name": "Laff Trakk",
+      "url": "/aadovza",
+      "copyName": "Jack Bush",
+      "copyDate": "2015"
+    },
+    "pictures": [
+      {
+        "id": 62763,
+        "name": "Laff Trakk",
+        "url": "/aadovza",
+        "copyName": "Jack Bush",
+        "copyDate": "2015"
+      },
+      {
+        "id": 53883,
+        "name": "Laff Trakk",
+        "url": "/aadbsla",
+        "copyName": "Hersheypark",
+        "copyDate": "2014-08"
+      },
+      {
+        "id": 62764,
+        "name": "Laff Trakk",
+        "url": "/aadowaa",
+        "copyName": "Jack Bush",
+        "copyDate": "2015"
+      },
+      {
+        "id": 62765,
+        "name": "Laff Trakk",
+        "url": "/aadowba",
+        "copyName": "Jack Bush",
+        "copyDate": "2015"
+      },
+      {
+        "id": 64282,
+        "name": "Laff Trakk",
+        "url": "/aadrcka",
+        "copyName": "Martin Valt",
+        "copyDate": "2015-08-20"
+      },
+      {
+        "id": 64283,
+        "name": "Laff Trakk",
+        "url": "/aadrcla",
+        "copyName": "Martin Valt",
+        "copyDate": "2015-08-20"
+      },
+      {
+        "id": 64284,
+        "name": "Laff Trakk",
+        "url": "/aadrcma",
+        "copyName": "Martin Valt",
+        "copyDate": "2015-08-20"
+      }
+    ],
+    "coords": {
+      "lat": "40.293555",
+      "lng": "-76.655068"
+    }
+  },
+  {
+    "id": 1994,
+    "name": "Lightning Racer",
+    "park": {
+      "name": "Hersheypark",
+      "id": 15
+    },
+    "city": "Hershey",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "region": "United States",
+    "link": "/597.htm",
+    "status": {
+      "state": "Operating",
+      "date": {
+        "opened": "2000-05-13"
+      }
+    },
+    "make": "Great Coasters International",
+    "model": "Wooden Coasters",
+    "type": "Wood",
+    "design": "Sit Down",
+    "stats": {
+      "name": [
+        "Thunder",
+        "Lightning"
+      ],
+      "length": [
+        "1034.2",
+        "1034.2"
+      ],
+      "height": [
+        "27.9",
+        "27.9"
+      ],
+      "drop": [
+        "27.4",
+        "27.4"
+      ],
+      "speed": [
+        "82.2",
+        "82.2"
+      ],
+      "inversions": [
+        "0",
+        "0"
+      ],
+      "duration": [
+        "2:20",
+        "2:20"
+      ],
+      "g-Force": [
+        "3.6",
+        "3.6"
+      ],
+      "elements": [
+        "Chain Lift Hill",
+        "Chain Lift Hill"
+      ],
+      "arrangement": "4 trains with 12 cars per train. Riders are arranged 2 across in a single row for a total of 24 riders per train.",
+      "builtBy": "Great Coasters International",
+      "designer": "Mike Boodley"
+    },
+    "mainPicture": {
+      "id": 919,
+      "name": "Lightning Racer",
+      "url": "/aaabjja",
+      "copyName": "Joel Rogers",
+      "copyDate": ""
+    },
+    "pictures": [
+      {
+        "id": 919,
+        "name": "Lightning Racer",
+        "url": "/aaabjja",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 920,
+        "name": "Lightning Racer",
+        "url": "/aaabjka",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 921,
+        "name": "Lightning Racer",
+        "url": "/aaabjla",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 922,
+        "name": "Lightning Racer",
+        "url": "/aaabjma",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 923,
+        "name": "Lightning Racer",
+        "url": "/aaabjna",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 924,
+        "name": "Lightning Racer",
+        "url": "/aaabjoa",
+        "copyName": "Joel Rogers",
+        "copyDate": ""
+      },
+      {
+        "id": 4852,
+        "name": "Lightning Racer",
+        "url": "/aaaheqa",
+        "copyName": "coasterimage.com",
+        "copyDate": "2002"
+      },
+      {
+        "id": 4853,
+        "name": "Lightning Racer",
+        "url": "/aaahera",
+        "copyName": "coasterimage.com",
+        "copyDate": "2002"
+      },
+      {
+        "id": 4854,
+        "name": "Lightning Racer",
+        "url": "/aaahesa",
+        "copyName": "coasterimage.com",
+        "copyDate": "2002"
+      },
+      {
+        "id": 4855,
+        "name": "Lightning Racer",
+        "url": "/aaaheta",
+        "copyName": "coasterimage.com",
+        "copyDate": "2002"
+      },
+      {
+        "id": 25508,
+        "name": "Lightning Racer",
+        "url": "/aabltca",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 25509,
+        "name": "Lightning Racer",
+        "url": "/aabltda",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 25510,
+        "name": "Lightning Racer",
+        "url": "/aabltea",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 25511,
+        "name": "Lightning Racer",
+        "url": "/aabltfa",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 25515,
+        "name": "Lightning Racer",
+        "url": "/aabltja",
+        "copyName": "Tommy Faircloth",
+        "copyDate": "2009-05-31"
+      },
+      {
+        "id": 30608,
+        "name": "Lightning Racer",
+        "url": "/aabthga",
+        "copyName": "Patrick R. Wagner",
+        "copyDate": "2010"
+      },
+      {
+        "id": 33925,
+        "name": "Lightning Racer",
+        "url": "/aabyeva",
+        "copyName": "Harrison L. Michelson",
+        "copyDate": "2010-09-24"
+      },
+      {
+        "id": 33926,
+        "name": "Lightning Racer",
+        "url": "/aabyewa",
+        "copyName": "Harrison L. Michelson",
+        "copyDate": "2010-09-24"
+      },
+      {
+        "id": 33927,
+        "name": "Lightning Racer",
+        "url": "/aabyexa",
+        "copyName": "Harrison L. Michelson",
+        "copyDate": "2010-09-24"
+      },
+      {
+        "id": 33928,
+        "name": "Lightning Racer",
+        "url": "/aabyeya",
+        "copyName": "Harrison L. Michelson",
+        "copyDate": "2010-09-24"
+      },
+      {
+        "id": 62557,
+        "name": "Lightning Racer",
+        "url": "/aadooba",
+        "copyName": "Karen Kraus",
+        "copyDate": "2015-07-22"
+      },
+      {
+        "id": 62558,
+        "name": "Lightning Racer",
+        "url": "/aadooca",
+        "copyName": "Karen Kraus",
+        "copyDate": "2015-07-22"
+      },
+      {
+        "id": 118872,
+        "name": "Lightning Racer",
+        "url": "/aagtwaa",
+        "copyName": "Malcolm Marr",
+        "copyDate": "2006-06-03"
+      },
+      {
+        "id": 118873,
+        "name": "Lightning Racer",
+        "url": "/aagtwba",
+        "copyName": "Malcolm Marr",
+        "copyDate": "2010-06-13"
+      }
+    ],
+    "coords": {
+      "lat": "40.292884",
+      "lng": "-76.653171"
+    }
+  }
+]
