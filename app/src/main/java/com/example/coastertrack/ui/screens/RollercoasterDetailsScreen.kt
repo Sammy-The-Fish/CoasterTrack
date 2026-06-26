@@ -303,7 +303,7 @@ fun MainStatistic(
 ) {
     Box(
         modifier = modifier
-            .padding(15.dp, 15.dp)
+            .padding(10.dp)
             .height(100.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(25.dp))

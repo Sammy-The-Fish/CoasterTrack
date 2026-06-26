@@ -121,8 +121,8 @@ fun IntroScreenOne(navController: NavController = rememberNavController()) {
                     ) {
                         Text(
                             "Coaster Track",
-                            style = MaterialTheme.typography.displayMediumEmphasized,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                            style = MaterialTheme.typography.displayMedium,
+                            color = MaterialTheme.colorScheme.primary
                         )
                         Text(
                             "This is the one app you need for the queue times at all of your favourite parks, as well as providing information about rollercoasters " +
