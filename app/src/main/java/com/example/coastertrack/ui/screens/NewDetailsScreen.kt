@@ -215,12 +215,12 @@ fun NewDetailsScreen(
                                     horizontalArrangement = Arrangement.End
                                 ) {
                                     val fullText = state.details.name
-                                    if (fits == true) {
+                                    if (fits) {
                                         Text(
                                             fullText,
                                             fontFamily = robotoSerif,
                                             fontWeight = FontWeight.ExtraBold,
-                                            fontSize = 48.sp,
+                                            fontSize = 42.sp,
                                             color = MaterialTheme.colorScheme.onSecondaryContainer,
                                             maxLines = 1,
                                             overflow = TextOverflow.Clip,
@@ -230,7 +230,7 @@ fun NewDetailsScreen(
                                                 fits = !it.hasVisualOverflow
                                             },
                                             modifier = Modifier
-                                                .padding(20.dp, 0.dp, 15.dp, 0.dp)
+                                                .padding(20.dp, 10.dp, 0.dp, 0.dp)
                                                 .fillMaxWidth()
                                                 .weight(1f)
                                             //                            .weight(2f)
@@ -317,10 +317,10 @@ fun NewDetailsScreen(
                                         state.details.name,
                                         fontFamily = robotoSerif,
                                         fontWeight = FontWeight.ExtraBold,
-                                        fontSize = 48.sp,
+                                        fontSize = 42.sp,
                                         color = MaterialTheme.colorScheme.onSecondaryContainer,
 //                                overflow = TextOverflow.Ellipsis, //                                maxLines = 1,
-                                        lineHeight = 56.sp,
+                                        lineHeight = 48.sp,
                                         modifier = Modifier
                                             .padding(15.dp, 0.dp)
                                             .fillMaxWidth()
