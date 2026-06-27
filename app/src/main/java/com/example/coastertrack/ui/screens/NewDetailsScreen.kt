@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -29,11 +30,16 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -146,7 +152,10 @@ fun NewDetailsScreen(
                                     )
                                 }
                                 view.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
-                            }) {
+                            },
+                                contentColor = MaterialTheme.colorScheme.primary,
+                                containerColor = MaterialTheme.colorScheme.surface
+                            ) {
                                 Text(text = "Ridden")
                                 Icon(
                                     imageVector = Icons.Default.Add,
@@ -211,30 +220,24 @@ fun NewDetailsScreen(
                                     .offset(0.dp, (-40).dp)
                             ) {
                                 Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.End
+                                    modifier = Modifier.fillMaxWidth().offset(0.dp, (-80).dp),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    val fullText = state.details.name
-                                    if (fits) {
-                                        Text(
-                                            fullText,
-                                            fontFamily = robotoSerif,
-                                            fontWeight = FontWeight.ExtraBold,
-                                            fontSize = 42.sp,
-                                            color = MaterialTheme.colorScheme.onSecondaryContainer,
-                                            maxLines = 1,
-                                            overflow = TextOverflow.Clip,
-                                            lineHeight = 48.sp,
-
-                                            onTextLayout = {
-                                                fits = !it.hasVisualOverflow
-                                            },
-                                            modifier = Modifier
-                                                .padding(20.dp, 10.dp, 0.dp, 0.dp)
-                                                .fillMaxWidth()
-                                                .weight(1f)
-                                            //                            .weight(2f)
+                                    val size = ButtonDefaults.MediumContainerHeight
+                                    FilledTonalButton(
+                                        onClick = { navController.popBackStack() },
+                                        modifier = Modifier.heightIn(size)
+                                            .padding(20.dp, 0.dp, 0.dp, 0.dp),
+                                        contentPadding = ButtonDefaults.contentPaddingFor(size),
+                                    ) {
+                                        Icon(
+                                            Icons.AutoMirrored.Filled.ArrowBack,
+                                            contentDescription = "Localized description",
+                                            modifier = Modifier.size(ButtonDefaults.iconSizeFor(size)),
                                         )
+                                        Spacer(Modifier.size(ButtonDefaults.iconSpacingFor(size)))
+                                        Text("Back", style = ButtonDefaults.textStyleFor(size))
                                     }
                                     when (val queueState = queueTime) {
                                         is QueueUiState.Success -> {
@@ -242,7 +245,6 @@ fun NewDetailsScreen(
                                                 Box(
                                                     modifier = Modifier
                                                         .padding(0.dp, 10.dp, 20.dp, 10.dp)
-                                                        .offset(0.dp, (-80).dp)
                                                         .height(140.dp)
                                                         .aspectRatio(1f)
                                                         .clip(queueTimeShape)
@@ -272,7 +274,6 @@ fun NewDetailsScreen(
                                                 Box(
                                                     modifier = Modifier
                                                         .padding(0.dp, 10.dp, 20.dp, 10.dp)
-                                                        .offset(0.dp, (-80).dp)
                                                         .height(140.dp)
                                                         .aspectRatio(1f)
                                                         .clip(closedShape)
@@ -302,19 +303,20 @@ fun NewDetailsScreen(
                                                 }
                                             }
                                         }
-
                                         is QueueUiState.Loading -> {
-
+                                            Spacer(modifier = Modifier.height(160.dp))
                                         }
-
                                         is QueueUiState.Error -> {
 
                                         }
                                     }
                                 }
-                                if (!fits) {
+
+
+                                Column(modifier = Modifier.offset(0.dp, (-95).dp)) {
                                     Text(
                                         state.details.name,
+
                                         fontFamily = robotoSerif,
                                         fontWeight = FontWeight.ExtraBold,
                                         fontSize = 42.sp,
@@ -325,13 +327,9 @@ fun NewDetailsScreen(
                                             .padding(15.dp, 0.dp)
                                             .fillMaxWidth()
 //                                    .weight(1f)
-                                            .offset(0.dp, (-85).dp)
+//                                            .offset(0.dp, (-85).dp)
                                         //                            .weight(2f)
                                     )
-                                }
-
-
-                                Column(modifier = Modifier.offset(0.dp, (-80).dp)) {
 
                                     RollercoasterDetails(
                                         statistic1 = {
