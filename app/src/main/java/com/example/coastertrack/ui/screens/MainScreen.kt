@@ -111,7 +111,7 @@ fun MainScreen(navController: NavController) {
                 NavigationDrawerItem(
                     label = { Text(text = "settings") },
                     selected = false,
-                    onClick = { navController.navigate("test") },
+                    onClick = { navController.navigate("test/${88}") },
                     icon = {
                         Icon(Icons.Default.Settings, "settings")
                     }

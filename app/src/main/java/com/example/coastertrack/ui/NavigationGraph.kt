@@ -1,5 +1,7 @@
 package com.example.coastertrack.ui
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -12,10 +14,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.coastertrack.ui.screens.MainScreen
+import com.example.coastertrack.ui.screens.NewDetailsScreen
 import com.example.coastertrack.ui.screens.ParkDetailsScreen
 import com.example.coastertrack.ui.screens.RollercoasterDetailsScreen
 import com.example.coastertrack.ui.screens.RollercoasterRankingScreen
-import com.example.coastertrack.ui.screens.TestScreen
 import com.example.coastertrack.ui.screens.TotalParksScreen
 import com.example.coastertrack.ui.screens.TotalRollercoasterScreen
 import com.example.coastertrack.ui.screens.VisitCreationParkSelectionScreen
@@ -27,6 +29,7 @@ import com.example.coastertrack.ui.screens.intro.IntroScreenTwo
 import com.example.coastertrack.ui.viewmodel.CheckFirstTImeViewModel
 
 // navigation tree which connects screen together
+@RequiresApi(Build.VERSION_CODES.R)
 @Composable
 fun NavigationGraph(
     modifier: Modifier = Modifier
@@ -69,8 +72,11 @@ fun NavigationGraph(
             },
 
             ) { backStackEntry ->
-            RollercoasterDetailsScreen(
-                navController = navController
+//            RollercoasterDetailsScreen(
+//                navController = navController
+//            )
+            NewDetailsScreen(
+                navController
             )
         }
 
@@ -264,7 +270,8 @@ fun NavigationGraph(
         }
 
         composable(
-            route = "test",
+            route = "test/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.IntType }),
             enterTransition = {
                 when (initialState.destination.route) {
                     "main" -> slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right)
@@ -278,7 +285,7 @@ fun NavigationGraph(
                 }
             }
         ) {
-            TestScreen()
+            NewDetailsScreen(navController)
         }
 
     }
