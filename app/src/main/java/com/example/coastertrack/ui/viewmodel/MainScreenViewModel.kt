@@ -21,7 +21,7 @@ class MainScreenViewModel @Inject constructor(
     private val parkDatabaseRepository: ParkDatabaseRepository,
     private val visitDatabaseRepository: VisitDatabaseRepository
 ) : ViewModel() {
-    fun resetData(context: Context) {
+    fun resetData() {
         viewModelScope.launch {
             // visits and rollercoasters must be deleted first as they reference parks in foreign keys
             visitDatabaseRepository.deleteAllVisits()

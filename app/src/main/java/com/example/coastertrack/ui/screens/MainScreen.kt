@@ -109,14 +109,6 @@ fun MainScreen(navController: NavController) {
                 )
                 HorizontalDivider()
                 NavigationDrawerItem(
-                    label = { Text(text = "settings") },
-                    selected = false,
-                    onClick = { navController.navigate("test/${88}") },
-                    icon = {
-                        Icon(Icons.Default.Settings, "settings")
-                    }
-                )
-                NavigationDrawerItem(
                     label = { Text(text = "info") },
                     selected = false,
                     onClick = { /*TODO*/ },
@@ -128,7 +120,7 @@ fun MainScreen(navController: NavController) {
                     label = { Text(text = "reset data") },
                     selected = false,
                     onClick = {
-                        viewModel.resetData(context)
+                        viewModel.resetData()
                     },
                     icon = {
                         Icon(
@@ -137,6 +129,16 @@ fun MainScreen(navController: NavController) {
                         )
                     }
                 )
+                NavigationDrawerItem(
+                    label = { Text(text = "Settings") },
+                    selected = false,
+                    onClick = { navController.navigate("settings") },
+                    icon = {
+                        Icon(Icons.Default.Settings, "settings")
+                    }
+                )
+
+
             }
         },
         drawerState = drawerState,

@@ -378,9 +378,11 @@ fun NewDetailsScreen(
                                                     text = item.name + ": ",
                                                     fontWeight = FontWeight.Bold
                                                 )
-                                                Text(
-                                                    text = item.value
-                                                )
+                                                item.value?.let {
+                                                    Text(
+                                                        text = it
+                                                    )
+                                                }
                                             }
                                         }
                                     }

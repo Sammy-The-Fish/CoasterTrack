@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,11 +15,13 @@ import androidx.compose.material3.DockedSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -34,7 +37,7 @@ import com.example.coastertrack.ui.viewmodel.ParkLookUpVewModel
 fun ParkLookUpScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
-    onItemClick: (id: Int) -> Unit = {}
+    onItemClick: (id: Int) -> Unit = {},
 ) {
     val viewModel: ParkLookUpVewModel = hiltViewModel()
 
@@ -77,31 +80,36 @@ fun ParkLookUpScreen(
                     .padding(0.dp)
                     .fillMaxWidth(),
             )
+            // if parks have not been loaded, show a loading screen
+            if (parks.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    LinearProgressIndicator()
+                }
+            }else {
 
 
-            LazyColumn(
-                modifier = Modifier
-                    .padding(0.dp)
-                    .weight(1f), // This makes LazyColumn take the rest of the available space
-                contentPadding = PaddingValues(0.dp, 10.dp)
-            ) {
-                items(parks) { item ->
-                    when (val state = item.pic) {
-                        is PictureUIState.Success -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(0.dp)
+                        .weight(1f), // This makes LazyColumn take the rest of the available space
+                ) {
+                    items(parks) { item ->
+//                    when (val state = item.pic) {
+                        if (item.pic != null) {
                             PictureListItem(
                                 name = item.name,
-                                picUrl = state.url,
+                                picUrl = item.pic,
                                 onClick = {
                                     onItemClick(item.id)
-                                })
-                        }
-
-                        else -> {
+                                },
+                            )
+                        } else {
                             PictureListItem(
                                 name = item.name,
                                 onClick = {
                                     onItemClick(item.id)
-                                })
+                                },
+                            )
                         }
                     }
                 }

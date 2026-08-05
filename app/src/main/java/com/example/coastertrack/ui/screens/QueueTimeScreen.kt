@@ -3,6 +3,7 @@ package com.example.coastertrack.ui.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -107,7 +108,7 @@ fun QueueTimeScreen(
                     ) {
                         LazyColumn(
                             verticalArrangement = Arrangement.Top,
-                            state = lazyListState
+                            state = lazyListState,
                         ) {
                             if (index == 0) {
                                 items(items.rollercoasterQueues) { ride ->
@@ -116,9 +117,8 @@ fun QueueTimeScreen(
                                         queue = ride.queue,
                                         picUrl = ride.picture,
                                         isOpen = ride.isOpen,
-                                        modifier = Modifier.padding(0.dp, 5.dp),
                                         navController = navController,
-                                        id = ride.id
+                                        id = ride.id,
                                     )
                                 }
                             } else {
@@ -127,7 +127,6 @@ fun QueueTimeScreen(
                                         name = ride.name,
                                         queue = ride.queue,
                                         isOpen = ride.isOpen,
-                                        modifier = Modifier.padding(0.dp, 5.dp),
                                         navController = navController,
                                     )
                                 }

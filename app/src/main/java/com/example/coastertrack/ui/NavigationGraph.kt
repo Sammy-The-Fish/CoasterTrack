@@ -18,6 +18,7 @@ import com.example.coastertrack.ui.screens.NewDetailsScreen
 import com.example.coastertrack.ui.screens.ParkDetailsScreen
 import com.example.coastertrack.ui.screens.RollercoasterDetailsScreen
 import com.example.coastertrack.ui.screens.RollercoasterRankingScreen
+import com.example.coastertrack.ui.screens.SettingsScreen
 import com.example.coastertrack.ui.screens.TotalParksScreen
 import com.example.coastertrack.ui.screens.TotalRollercoasterScreen
 import com.example.coastertrack.ui.screens.VisitCreationParkSelectionScreen
@@ -70,14 +71,13 @@ fun NavigationGraph(
             exitTransition = {
                 slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
             },
-
             ) { backStackEntry ->
-//            RollercoasterDetailsScreen(
-//                navController = navController
-//            )
-            NewDetailsScreen(
-                navController
+            RollercoasterDetailsScreen(
+                navController = navController
             )
+//            NewDetailsScreen(
+//                navController
+//            )
         }
 
         composable(
@@ -270,22 +270,15 @@ fun NavigationGraph(
         }
 
         composable(
-            route = "test/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.IntType }),
+            route = "settings",
             enterTransition = {
-                when (initialState.destination.route) {
-                    "main" -> slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right)
-                    else -> slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
-                }
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
             },
             exitTransition = {
-                when (targetState.destination.route) {
-                    "" -> slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left)
-                    else -> slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
-                }
-            }
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+            },
         ) {
-            NewDetailsScreen(navController)
+            SettingsScreen(navController)
         }
 
     }

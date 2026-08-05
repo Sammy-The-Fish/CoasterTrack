@@ -81,20 +81,22 @@ fun VisitScreen(
                     if (state.details.daysToEvent == 0) {
                         Icon(
                             Icons.Default.Celebration,
-                            "visit today"
+                            "visit today",
+                            tint = MaterialTheme.colorScheme.onTertiaryContainer
 
                         )
                         Spacer(modifier.width(10.dp))
 
-                        Text("today")
+                        Text("today", color = MaterialTheme.colorScheme.onTertiaryContainer)
                     }
                     else {
                         Icon(
                             Icons.Default.Today,
-                            "calender"
+                            "calender",
+                            tint = MaterialTheme.colorScheme.onTertiaryContainer
                         )
                         Spacer(modifier.width(10.dp))
-                        Text("${state.details.daysToEvent} days")
+                        Text("${state.details.daysToEvent} days", color = MaterialTheme.colorScheme.onTertiaryContainer)
                     }
                 },
                 topAppBar = {

@@ -17,7 +17,7 @@ fun RollercoasterDetails(
 ) {
     Column {
         Row(
-            modifier = Modifier.padding(10.dp)
+//            modifier = Modifier.padding()
         ) {
             Column(
                 modifier = Modifier.weight(1f),

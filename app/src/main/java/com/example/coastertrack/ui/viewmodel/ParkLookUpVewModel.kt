@@ -52,8 +52,11 @@ class ParkLookUpVewModel @Inject constructor(
         getParkData()
 
         viewModelScope.launch {
-            _searchText.collect {
-                getParkPictures()
+            _parks.collect { parks ->
+                for (park in parks) {
+                    park.pic = getParkPicture(park.id)
+                }
+                _parks.emit(parks)
             }
         }
     }
@@ -67,7 +70,8 @@ class ParkLookUpVewModel @Inject constructor(
                     responseParks.add(
                         ParkUIModel(
                             name = park.name,
-                            id = park.id
+                            id = park.id,
+                            pic = null
                         )
                     )
                 }
@@ -76,35 +80,31 @@ class ParkLookUpVewModel @Inject constructor(
         }
     }
 
-    private fun getParkPictures() {
-        viewModelScope.launch {
-            parks.value.forEach { park ->
-                getParkPicture(park)
-            }
-        }
-    }
+//    private fun getParkPictures() {
+//        viewModelScope.launch {
+//            parks.value.forEach { park ->
+//                getParkPicture(park)
+//            }
+//        }
+//    }
 
-    private suspend fun getParkPicture(park: ParkUIModel) {
-        if (park.pic is PictureUIState.Success) {
-            return
-        }
+    private suspend fun getParkPicture(park: Int): String? {
         try {
-            val response = rcdbRepository.getParkByID(park.id)
+            val response = rcdbRepository.getParkByID(park)
             if (response.isEmpty()) {
-                park.pic = PictureUIState.None
-                return
+                return null
             }
 
             val parkPictures = response[0]
             if (parkPictures.mainPicture != null) {
                 val url = "https://rcdb.com${parkPictures.mainPicture.url}"
-                park.pic = PictureUIState.Success(url)
+                return url
             } else {
-                park.pic = PictureUIState.None
+                return null
             }
 
         } catch (e: IOException) {
-            park.pic = PictureUIState.Error
+            return null
         }
     }
 }

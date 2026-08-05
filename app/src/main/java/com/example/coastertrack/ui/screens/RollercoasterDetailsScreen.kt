@@ -71,7 +71,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RollercoasterDetailsScreen(
-    navController: NavController
+    navController: NavController,
 ) {
     val viewModel: RollercoasterDetailsViewModel = hiltViewModel()
 
@@ -98,132 +98,111 @@ fun RollercoasterDetailsScreen(
                 },
                 coasterName = state.details.name
             )
-            DetailsScreen(
-                snackbarHostState = snackBarHostState,
-                name = {
-                    Text(text = state.details.name)
-                },
-                photo = {
-                    AsyncImage(
-                        modifier = Modifier.fillMaxWidth(),
-                        model = state.details.pictures[0].url,
-                        contentDescription = "picture of ${state.details.name}",
-                        contentScale = ContentScale.Crop
-                    )
-                },
-                mainInfo = {
-                    Icon(
-                        Icons.Default.Schedule,
-                        contentDescription = "queue time",
-                        tint = MaterialTheme.colorScheme.onTertiaryContainer,
-                    )
-                    Spacer(modifier = Modifier.width(10.dp))
-                    when (val queueUiState = queueTime) {
-                        is QueueUiState.Success -> {
-                            Text(
-                                text = if (queueUiState.queue.isOpen) "${queueUiState.queue.queueTime} min"
-                                else "closed",
-                                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                style = MaterialTheme.typography.labelLarge
-                            )
-                        }
-
-                        else -> {
-                            Text(
-                                text = "---",
-                                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                style = MaterialTheme.typography.labelLarge
-                            )
-                        }
+            DetailsScreen(snackbarHostState = snackBarHostState, name = {
+                Text(text = state.details.name)
+            }, photo = {
+                AsyncImage(
+                    modifier = Modifier.fillMaxWidth(),
+                    model = state.details.pictures[0].url,
+                    contentDescription = "picture of ${state.details.name}",
+                    contentScale = ContentScale.Crop
+                )
+            }, mainInfo = {
+                Icon(
+                    Icons.Default.Schedule,
+                    contentDescription = "queue time",
+                    tint = MaterialTheme.colorScheme.onTertiaryContainer,
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+                when (val queueUiState = queueTime) {
+                    is QueueUiState.Success -> {
+                        Text(
+                            text = if (queueUiState.queue.isOpen) "${queueUiState.queue.queueTime} min"
+                            else "closed",
+                            color = MaterialTheme.colorScheme.onTertiaryContainer,
+                            style = MaterialTheme.typography.labelLarge
+                        )
                     }
-                },
-                floatingActionButton = {
-                    if (hasRidden != null) {
-                        AnimatedVisibility(
-                            visible = !hasRidden!!,
-                            exit = shrinkHorizontally() + fadeOut()
-                        ) {
-                            ExtendedFloatingActionButton(onClick = {
-                                viewModel.saveRollercoasterToDatabase()
-                                scope.launch {
-                                    snackBarHostState.showSnackbar(
-                                        "${state.details.name} added to ride list",
-                                        duration = SnackbarDuration.Short,
-                                        withDismissAction = true
-                                    )
-                                }
-                                view.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
-                            }) {
-                                Text(text = "Ridden")
-                                Icon(
-                                    imageVector = Icons.Default.Add,
-                                    contentDescription = "add rollercoaster to ride list"
-                                )
-                            }
-                        }
-                        AnimatedVisibility(
-                            visible = hasRidden!!,
-                            enter = fadeIn(tween(0))
-                        ) {
-                            FloatingActionButton(onClick = { showDialogue = true }) {
-                                Icon(
-                                    imageVector = Icons.Default.Done,
-                                    contentDescription = "rollercoaster on ride list"
-                                )
-                            }
-                        }
 
-
+                    else -> {
+                        Text(
+                            text = "---",
+                            color = MaterialTheme.colorScheme.onTertiaryContainer,
+                            style = MaterialTheme.typography.labelLarge
+                        )
                     }
-                },
-                scrollState = rememberScrollState(),
-                topAppBar = {
-                    TopAppBar(
-                        title = {
-                            Text(text = "Rollercoaster Details")
-                        },
-                        navigationIcon = {
-                            IconButton(
-                                onClick = {
-                                    navController.popBackStack()
-                                },
-                            ) {
-                                Icon(
-                                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                    contentDescription = "back icon"
-                                )
-                            }
-                        }
-                    )
                 }
-            ) {
+            }, floatingActionButton = {
+                if (hasRidden != null) {
+                    AnimatedVisibility(
+                        visible = !hasRidden!!, exit = shrinkHorizontally() + fadeOut()
+                    ) {
+                        ExtendedFloatingActionButton(onClick = {
+                            viewModel.saveRollercoasterToDatabase()
+                            scope.launch {
+                                snackBarHostState.showSnackbar(
+                                    "${state.details.name} added to ride list",
+                                    duration = SnackbarDuration.Short,
+                                    withDismissAction = true
+                                )
+                            }
+                            view.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
+                        }) {
+                            Text(text = "Ridden")
+                            Icon(
+                                imageVector = Icons.Default.Add,
+                                contentDescription = "add rollercoaster to ride list"
+                            )
+                        }
+                    }
+                    AnimatedVisibility(
+                        visible = hasRidden!!, enter = fadeIn(tween(0))
+                    ) {
+                        FloatingActionButton(onClick = { showDialogue = true }) {
+                            Icon(
+                                imageVector = Icons.Default.Done,
+                                contentDescription = "rollercoaster on ride list"
+                            )
+                        }
+                    }
+
+
+                }
+            }, scrollState = rememberScrollState(), topAppBar = {
+                TopAppBar(title = {
+                    Text(text = "Rollercoaster Details")
+                }, navigationIcon = {
+                    IconButton(
+                        onClick = {
+                            navController.popBackStack()
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "back icon"
+                        )
+                    }
+                })
+            }) {
                 RollercoasterDetails(
                     statistic1 = {
                         MainStatistic(
-                            name = "Height:",
-                            value = state.details.height?.toString(),
-                            "m"
+                            name = "Height:", value = state.details.height?.value, state.details.height?.unit
                         )
                     },
                     statistic2 = {
                         MainStatistic(
-                            name = "Speed:",
-                            value = state.details.speed?.toString(),
-                            "km/h"
+                            name = "Speed:", value = state.details.speed?.value, state.details.speed?.unit
                         )
                     },
                     statistic3 = {
                         MainStatistic(
-                            name = "Length:",
-                            value = state.details.length?.toString(),
-                            "m"
+                            name = "Length:", value = state.details.length?.value, state.details.length?.unit
                         )
                     },
                     statistic4 = {
                         MainStatistic(
-                            name = "Inversions",
-                            value = state.details.inversions?.toString(),
-                            ""
+                            name = "Inversions", value = state.details.inversions?.value
                         )
                     },
                 )
@@ -231,23 +210,23 @@ fun RollercoasterDetailsScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(25.dp, 0.dp)
+                        .padding(10.dp, 0.dp)
                         .clip(RoundedCornerShape(25.dp))
                         .background(color = MaterialTheme.colorScheme.surfaceContainer)
                         .padding(15.dp)
                 ) {
-
                     state.details.statistics.forEach { item ->
                         Row(
                             horizontalArrangement = Arrangement.Start
                         ) {
                             Text(
-                                text = item.name + ": ",
-                                fontWeight = FontWeight.Bold
+                                text = item.name + ": ", fontWeight = FontWeight.Bold
                             )
-                            Text(
-                                text = item.value
-                            )
+                            item.value?.let {
+                                Text(
+                                    text = it
+                                )
+                            }
                         }
                     }
                 }
@@ -272,8 +251,7 @@ fun RollercoasterDetailsScreen(
 
         is RollercoasterUiState.Error -> {
             Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -281,8 +259,7 @@ fun RollercoasterDetailsScreen(
                     Icon(
                         imageVector = Icons.Filled.WifiOff,
                         contentDescription = "wifi off",
-                        modifier = Modifier
-                            .size(200.dp),
+                        modifier = Modifier.size(200.dp),
                         tint = MaterialTheme.colorScheme.surfaceContainer,
 
                         )
@@ -299,8 +276,10 @@ fun MainStatistic(
     name: String,
     value: String?,
     unit: String? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
+    val displayUnit = unit ?: ""
+
     Box(
         modifier = modifier
             .padding(10.dp)
@@ -317,18 +296,15 @@ fun MainStatistic(
             fontSize = 15.sp
         )
         Row(
-            modifier = Modifier.align(Alignment.Center),
-            verticalAlignment = Alignment.Bottom
+            modifier = Modifier.align(Alignment.Center), verticalAlignment = Alignment.Bottom
         ) {
             Text(
                 buildAnnotatedString {
                     append(value ?: "---")
                     withStyle(style = SpanStyle(fontSize = 20.sp)) {
-                        append(" $unit")
+                        append(" $displayUnit")
                     }
-                },
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Medium
+                }, style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Medium
             )
         }
 
@@ -343,24 +319,18 @@ fun RemoveDialogue(
     coasterName: String,
 ) {
     if (showDialogue) {
-        AlertDialog(
-            onDismissRequest = { onDismiss() },
-            confirmButton = {
-                TextButton(onClick = { onConfirm() }) {
-                    Text(text = "remove")
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { onDismiss() }) {
-                    Text(text = "cancel")
-                }
-            },
-            title = {
-                Text(text = "remove $coasterName?")
-            },
-            text = {
-                Text(text = "are you sure want to remove $coasterName from your ride list?")
+        AlertDialog(onDismissRequest = { onDismiss() }, confirmButton = {
+            TextButton(onClick = { onConfirm() }) {
+                Text(text = "remove")
             }
-        )
+        }, dismissButton = {
+            TextButton(onClick = { onDismiss() }) {
+                Text(text = "cancel")
+            }
+        }, title = {
+            Text(text = "remove $coasterName?")
+        }, text = {
+            Text(text = "are you sure want to remove $coasterName from your ride list?")
+        })
     }
 }

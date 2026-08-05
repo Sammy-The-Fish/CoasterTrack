@@ -3,13 +3,15 @@ package com.example.coastertrack.data.repository
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import com.example.coastertrack.data.datastore.UserPreferenceKeys
 import com.example.coastertrack.data.datastore.UserPreferences
+import com.example.coastertrack.data.model.preferences.MeasurementSystem
 import kotlinx.coroutines.flow.Flow
 
 // allows UI and domain layers to interact with the user preferences system
 class UserPreferencesRepository(
-    private val context: Context
+    private val context: Context,
 ) {
 
     fun getParkId(): Flow<Int?> {
@@ -22,10 +24,50 @@ class UserPreferencesRepository(
 
 
     fun getIsFirstTime(): Flow<Boolean?> {
-        return UserPreferences.getBoolValue(booleanPreferencesKey(UserPreferenceKeys.IS_FIRST_TIME), context)
+        return UserPreferences.getBoolValue(
+            booleanPreferencesKey(UserPreferenceKeys.IS_FIRST_TIME),
+            context
+        )
     }
 
     suspend fun setIsFirstTime(value: Boolean) {
-        UserPreferences.setBoolValue(value, booleanPreferencesKey(UserPreferenceKeys.IS_FIRST_TIME), context)
+        UserPreferences.setBoolValue(
+            value,
+            booleanPreferencesKey(UserPreferenceKeys.IS_FIRST_TIME),
+            context
+        )
     }
+
+
+    fun getMeasurementSystem(): Flow<MeasurementSystem> {
+        return UserPreferences.getMeasurementSystem(
+            stringPreferencesKey(UserPreferenceKeys.MEASUREMENT_SYSTEM),
+            context
+        )
+    }
+
+    suspend fun setMeasurementSystem(value: MeasurementSystem) {
+        UserPreferences.setMeasurementSystem(
+            value,
+            stringPreferencesKey(UserPreferenceKeys.MEASUREMENT_SYSTEM),
+            context
+        )
+    }
+
+    fun getPrefersFeet(): Flow<Boolean?> {
+        return UserPreferences.getBoolValue(
+            booleanPreferencesKey(UserPreferenceKeys.PREFERS_FEET),
+            context
+        )
+    }
+
+    suspend fun setPrefersFeet(value: Boolean) {
+        UserPreferences.setBoolValue(
+            value,
+            booleanPreferencesKey(UserPreferenceKeys.PREFERS_FEET),
+            context
+        )
+    }
+
+
 }
