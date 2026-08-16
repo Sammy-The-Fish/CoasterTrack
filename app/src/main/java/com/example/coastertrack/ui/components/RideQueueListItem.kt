@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.coastertrack.R
+import com.example.coastertrack.ui.theme.Dimens
 
 
 // used to show queue times for a rollercoaster
@@ -40,15 +42,14 @@ fun RideQueueListItem(
     navController: NavController,
     //these are nullable as rides do not have a picture and do not have an on click action
     picUrl: String? = null,
-    id: Int? = null
+    id: Int? = null,
 ) {
 
     Surface(
         modifier = modifier
             .fillMaxWidth()
-            .height(120.dp)
-            .padding(5.dp)
-            .clip(RoundedCornerShape(25.dp))
+            .height(Dimens.ListItem.height)
+            .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
             .clickable(
                 indication = if (id == null) null else LocalIndication.current,
                 interactionSource = remember {
@@ -63,7 +64,10 @@ fun RideQueueListItem(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.background(Color.Transparent)
+            modifier = Modifier
+                .background(Color.Transparent)
+                .padding(Dimens.ListItem.internalPadding)
+
         ) {
             // only show image if an image is there
             if (picUrl != null) {
@@ -71,12 +75,11 @@ fun RideQueueListItem(
                     model = picUrl,
                     contentDescription = "image of $name",
                     modifier = Modifier
-                        .padding(10.dp, 0.dp)
-                        .width(100.dp)
-                        .aspectRatio(1.2f)
-                        .clip(RoundedCornerShape(25.dp))
+                        .fillMaxHeight()
+                        .aspectRatio(1.3f)
+                        .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
                         .background(
-                            //background being light gray to indicate it is still loading
+                            //background being light grey to indicate it is still loading
                             MaterialTheme.colorScheme.surfaceContainerLow
                         ),
                     contentScale = ContentScale.Crop
@@ -86,7 +89,7 @@ fun RideQueueListItem(
                 text = name,
                 modifier = Modifier
                     .weight(4f)
-                    .padding(10.dp),
+                    .padding(start = 10.dp),
                 style = MaterialTheme.typography.titleLarge
             )
 

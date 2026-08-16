@@ -81,7 +81,6 @@ fun TotalParksScreen(modifier: Modifier = Modifier, navController: NavController
                 backgroundColor = MaterialTheme.colorScheme.primaryContainer
             ) {
                 items(state.list) { item ->
-                    Spacer(Modifier.height(10.dp))
                     PictureListItem(
                         name = item.name,
                         picUrl = item.picUrl,

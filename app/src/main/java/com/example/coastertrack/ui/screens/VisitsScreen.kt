@@ -2,6 +2,7 @@ package com.example.coastertrack.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.coastertrack.ui.components.VisitListItem
+import com.example.coastertrack.ui.theme.Dimens
 import com.example.coastertrack.ui.viewmodel.VisitScreenViewModel
 
 @Composable
@@ -33,7 +35,8 @@ fun VisitsScreen(modifier: Modifier = Modifier, navController: NavController) {
                     startTime = item.startTime,
                     onClick = {
                         navController.navigate("visit/${item.id}")
-                    }
+                    },
+                    modifier = Modifier.padding(Dimens.ListItem.padding)
                 )
             }
         }

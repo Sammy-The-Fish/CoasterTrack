@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.example.coastertrack.ui.theme.Dimens
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 
 /**
@@ -38,33 +40,38 @@ fun ReorderableCollectionItemScope.RearrangeableListitem(
     name: String,
     index: Int,
     onClick: () -> Unit = {},
-    interactionSource: MutableInteractionSource
+    interactionSource: MutableInteractionSource,
 ) {
 
     Surface(
         onClick = { onClick() },
         modifier = modifier
             .fillMaxWidth()
-            .height(120.dp)
-            .padding(5.dp)
-            .clip(RoundedCornerShape(25.dp)),
+            .height(Dimens.ListItem.height)
+//            .padding(5.dp)
+            .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding)),
         color = MaterialTheme.colorScheme.surfaceContainer
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.background(Color.Transparent)
+            modifier = Modifier
+                .background(Color.Transparent)
+                .padding(10.dp)
         ) {
-            Text(index.toString(), modifier = Modifier.padding(10.dp), style = MaterialTheme.typography.titleLarge)
+            Text(
+                index.toString(),
+                modifier = Modifier.padding(10.dp),
+                style = MaterialTheme.typography.titleLarge
+            )
             // only show image if an image is there
             if (picUrl != null) {
                 Image(
                     painter = rememberAsyncImagePainter(model = picUrl),
                     contentDescription = "image of $name",
                     modifier = Modifier
-                        .padding(10.dp, 0.dp)
-                        .width(100.dp)
-                        .aspectRatio(1.2f)
-                        .clip(RoundedCornerShape(25.dp))
+                        .fillMaxHeight()
+                        .aspectRatio(1.3f)
+                        .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
                         .background(
                             //background being light gray to indicate it is still loading
                             MaterialTheme.colorScheme.surfaceContainerLow
@@ -74,14 +81,13 @@ fun ReorderableCollectionItemScope.RearrangeableListitem(
             } else {
                 PhotoPlaceholder(
                     modifier = Modifier
-                        .padding(10.dp, 0.dp)
                         .width(100.dp)
-                        .aspectRatio(1.2f)
-                        .clip(RoundedCornerShape(25.dp))
+                        .aspectRatio(1.3f)
+                        .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
                         .background(
                             MaterialTheme.colorScheme.surfaceContainerLow
                         )
-                ) {modifier ->
+                ) { modifier ->
                     Icon(
                         imageVector = Icons.Default.Landscape,
                         contentDescription = "no image",
@@ -99,11 +105,11 @@ fun ReorderableCollectionItemScope.RearrangeableListitem(
             IconButton(
                 modifier = Modifier
                     .padding(5.dp)
-                    .draggableHandle (
-                    interactionSource = interactionSource,
-                    onDragStarted = {},
-                    onDragStopped = {}
-                ),
+                    .draggableHandle(
+                        interactionSource = interactionSource,
+                        onDragStarted = {},
+                        onDragStopped = {}
+                    ),
                 onClick = {}
             ) {
                 Icon(Icons.Default.DragHandle, "drag handle")

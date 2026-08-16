@@ -92,7 +92,6 @@ fun TotalRollercoasterScreen(
                 backgroundColor = MaterialTheme.colorScheme.tertiaryContainer
             ) {
                 items(state.list) { item ->
-                    Spacer(Modifier.height(10.dp))
                     PictureListItem(
                         name = item.name,
                         picUrl = item.picUrl,

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,6 +27,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.example.coastertrack.ui.theme.Dimens
 import java.text.DateFormat
 import java.util.Date
 
@@ -37,7 +39,7 @@ fun VisitListItem(
     picUrl: String?,
     startTime: Date,
     endTime: Date? = null,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
 ) {
 
     val format = DateFormat.getDateInstance(DateFormat.SHORT)
@@ -46,14 +48,15 @@ fun VisitListItem(
         onClick = { onClick() },
         modifier = modifier
             .fillMaxWidth()
-            .height(120.dp)
-            .padding(5.dp)
-            .clip(RoundedCornerShape(25.dp)),
+            .height(Dimens.ListItem.height)
+            .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding)),
         color = MaterialTheme.colorScheme.surfaceContainer
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.background(Color.Transparent)
+            modifier = Modifier
+                .background(Color.Transparent)
+                .padding(Dimens.ListItem.internalPadding)
         ) {
             // only show image if an image is there
             if (picUrl != null) {
@@ -61,10 +64,9 @@ fun VisitListItem(
                     painter = rememberAsyncImagePainter(model = picUrl),
                     contentDescription = "image of $name",
                     modifier = Modifier
-                        .padding(10.dp, 0.dp)
-                        .width(100.dp)
-                        .aspectRatio(1.2f)
-                        .clip(RoundedCornerShape(25.dp))
+                        .fillMaxHeight()
+                        .aspectRatio(1.3f)
+                        .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
                         .background(
                             //background being light gray to indicate it is still loading
                             MaterialTheme.colorScheme.surfaceContainerLow
@@ -74,10 +76,9 @@ fun VisitListItem(
             } else {
                 PhotoPlaceholder(
                     modifier = Modifier
-                        .padding(10.dp, 0.dp)
-                        .width(100.dp)
-                        .aspectRatio(1.2f)
-                        .clip(RoundedCornerShape(25.dp))
+                        .fillMaxHeight()
+                        .aspectRatio(1.3f)
+                        .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
                 ) { modifier ->
                     Icon(
                         imageVector = Icons.Default.Landscape,
@@ -87,7 +88,8 @@ fun VisitListItem(
                 }
             }
             Column(
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.padding(start = 10.dp)
             ) {
                 Text(
                     text = name,

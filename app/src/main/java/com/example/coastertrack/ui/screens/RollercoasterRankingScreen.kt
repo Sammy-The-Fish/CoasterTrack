@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.coastertrack.ui.components.RearrangeableListitem
+import com.example.coastertrack.ui.theme.Dimens
 import com.example.coastertrack.ui.viewmodel.RollercoasterRankingViewModel
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
@@ -31,7 +32,7 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RollercoasterRankingScreen(
-    navController: NavController
+    navController: NavController,
 ) {
 
     val viewModel = hiltViewModel<RollercoasterRankingViewModel>()
@@ -78,7 +79,8 @@ fun RollercoasterRankingScreen(
                         interactionSource = interactionSource,
                         onClick = {
                             navController.navigate("rollercoaster/${item.id}")
-                        }
+                        },
+                        modifier = Modifier.padding(Dimens.ListItem.padding)
                     )
                 }
 

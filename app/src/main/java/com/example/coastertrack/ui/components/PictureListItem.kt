@@ -3,6 +3,7 @@ package com.example.coastertrack.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -39,13 +40,14 @@ fun PictureListItem(
         onClick = { onClick() },
         modifier = modifier
             .fillMaxWidth()
-            .height(Dimens.listItemHeight)
-            .clip(RoundedCornerShape(25.dp)),
+            .height(Dimens.ListItem.height)
+            .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding)),
         color = MaterialTheme.colorScheme.surfaceContainer
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.background(Color.Transparent)
+            modifier = Modifier.background(Color.Transparent).
+            padding(Dimens.ListItem.internalPadding)
         ) {
             // only show image if an image is there
             if (picUrl != null) {
@@ -53,10 +55,9 @@ fun PictureListItem(
                     model = picUrl,
                     contentDescription = "image of $name",
                     modifier = Modifier
-                        .padding(10.dp, 0.dp)
-                        .width(100.dp)
-                        .aspectRatio(1.2f)
-                        .clip(RoundedCornerShape(25.dp))
+                        .fillMaxHeight()
+                        .aspectRatio(1.3f)
+                        .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
                         .background(
                             //background being light gray to indicate it is still loading
                             MaterialTheme.colorScheme.surfaceContainerLow
@@ -66,10 +67,9 @@ fun PictureListItem(
             } else {
                 PhotoPlaceholder(
                     modifier = Modifier
-                        .padding(10.dp, 0.dp)
-                        .width(100.dp)
-                        .aspectRatio(1.2f)
-                        .clip(RoundedCornerShape(25.dp))
+                        .fillMaxHeight()
+                        .aspectRatio(1.3f)
+                        .clip(RoundedCornerShape(Dimens.ListItem.cornerRounding))
                         .background(
                             //background being light gray to indicate it is still loading
                             MaterialTheme.colorScheme.surfaceContainerLow
@@ -86,7 +86,7 @@ fun PictureListItem(
                 text = name,
                 modifier = Modifier
                     .weight(4f)
-                    .padding(10.dp),
+                    .padding(start = 10.dp),
                 style = MaterialTheme.typography.titleLarge
             )
         }

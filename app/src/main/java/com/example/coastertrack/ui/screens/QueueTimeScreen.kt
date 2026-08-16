@@ -39,6 +39,7 @@ import androidx.navigation.NavController
 import com.example.coastertrack.ui.components.QueueTimePageLoadingIndicator
 import com.example.coastertrack.ui.components.RideQueueListItem
 import com.example.coastertrack.ui.model.queuetimes.QueuesUIState
+import com.example.coastertrack.ui.theme.Dimens
 import com.example.coastertrack.ui.viewmodel.AbstractQueueTimeViewModel
 import kotlinx.coroutines.launch
 
@@ -117,6 +118,7 @@ fun QueueTimeScreen(
                                         isOpen = ride.isOpen,
                                         navController = navController,
                                         id = ride.id,
+                                        modifier = Modifier.padding(Dimens.ListItem.padding)
                                     )
                                 }
                             } else {
@@ -126,6 +128,7 @@ fun QueueTimeScreen(
                                         queue = ride.queue,
                                         isOpen = ride.isOpen,
                                         navController = navController,
+                                        modifier = Modifier.padding(Dimens.ListItem.padding)
                                     )
                                 }
                             }

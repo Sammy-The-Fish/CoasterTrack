@@ -5,9 +5,10 @@ import androidx.compose.ui.unit.dp
 
 object Dimens {
     object ListItem {
-        val test = 5.dp
+        val padding = PaddingValues(5.dp)
+        val height = 105.dp
+        val cornerRounding = 25.dp
+        val internalPadding = PaddingValues(10.dp)
     }
-    val listPadding = PaddingValues(5.dp)
-    val listItemHeight = 100.dp
-    val listCornerRounding = 100.dp
+
 }
