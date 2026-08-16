@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coastertrack.data.model.preferences.MeasurementSystem
 import com.example.coastertrack.data.repository.ParkDatabaseRepository
+import com.example.coastertrack.data.repository.RcdbRepository
 import com.example.coastertrack.data.repository.RollercoasterDatabaseRepository
 import com.example.coastertrack.data.repository.UserPreferencesRepository
 import com.example.coastertrack.data.repository.VisitDatabaseRepository
+import com.example.coastertrack.ui.model.parklookup.ParkUIModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,10 +18,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    val userPreferencesRepository: UserPreferencesRepository,
-    val visitDatabaseRepository: VisitDatabaseRepository,
-    val rollercoasterDatabaseRepository: RollercoasterDatabaseRepository,
-    val parkDatabaseRepository: ParkDatabaseRepository
+    private val userPreferencesRepository: UserPreferencesRepository,
+    private val visitDatabaseRepository: VisitDatabaseRepository,
+    private val rollercoasterDatabaseRepository: RollercoasterDatabaseRepository,
+    private val parkDatabaseRepository: ParkDatabaseRepository,
+    private val rcdbRepository: RcdbRepository
 ): ViewModel() {
 
     var selectedMeasurementSystem = mutableStateOf(MeasurementSystem.DEFAULT)
@@ -28,6 +31,8 @@ class SettingsViewModel @Inject constructor(
     var usesFeet = mutableStateOf(false)
         private set
 
+    val parkId = mutableStateOf<Int?>(null)
+    val parkUIModel = mutableStateOf<ParkUIModel?>(null)
 
     init {
         viewModelScope.launch {
@@ -38,11 +43,33 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             userPreferencesRepository.getPrefersFeet().collect {
                 usesFeet.value = it ?: false
-                Log.d("reading feeeet", "$it")
+            }
+        }
+        viewModelScope.launch {
+            userPreferencesRepository.getParkId().collect {
+                parkId.value = it
+                if (it != null) {
+                    val parkData = rcdbRepository.getParkByID(it)[0]
+                    parkUIModel.value = ParkUIModel(
+                        name = parkData.name,
+                        id = it,
+                        pic = "https://rcdb.com/" + parkData.mainPicture?.url
+                    )
+                }
             }
         }
 
     }
+
+
+    fun setPark(id: Int) {
+        viewModelScope.launch {
+            userPreferencesRepository.setParkId(id)
+        }
+    }
+
+
+
 
     fun onSelectedMeasurementChange(value: MeasurementSystem) {
         viewModelScope.launch {
@@ -52,7 +79,6 @@ class SettingsViewModel @Inject constructor(
 
     fun onUsesFeetChange(value: Boolean) {
         viewModelScope.launch {
-            Log.d("feeeet", "$value")
             userPreferencesRepository.setPrefersFeet(value)
         }
     }

@@ -98,7 +98,8 @@ fun TotalRollercoasterScreen(
                         picUrl = item.picUrl,
                         onClick = {
                             navController.navigate("rollercoaster/${item.id}")
-                        }
+                        },
+                        modifier = Modifier.padding(5.dp)
                     )
                 }
 

@@ -87,7 +87,8 @@ fun TotalParksScreen(modifier: Modifier = Modifier, navController: NavController
                         picUrl = item.picUrl,
                         onClick = {
                             navController.navigate("park/${item.id}")
-                        }
+                        },
+                        modifier = Modifier.padding(5.dp)
                     )
                 }
 

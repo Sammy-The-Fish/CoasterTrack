@@ -16,6 +16,7 @@ import androidx.navigation.navArgument
 import com.example.coastertrack.ui.screens.MainScreen
 import com.example.coastertrack.ui.screens.NewDetailsScreen
 import com.example.coastertrack.ui.screens.ParkDetailsScreen
+import com.example.coastertrack.ui.screens.ParkSelectionScreen
 import com.example.coastertrack.ui.screens.RollercoasterDetailsScreen
 import com.example.coastertrack.ui.screens.RollercoasterRankingScreen
 import com.example.coastertrack.ui.screens.SettingsScreen
@@ -33,7 +34,7 @@ import com.example.coastertrack.ui.viewmodel.CheckFirstTImeViewModel
 @RequiresApi(Build.VERSION_CODES.R)
 @Composable
 fun NavigationGraph(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val navController = rememberNavController()
 
@@ -71,7 +72,7 @@ fun NavigationGraph(
             exitTransition = {
                 slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
             },
-            ) { backStackEntry ->
+        ) { backStackEntry ->
             RollercoasterDetailsScreen(
                 navController = navController
             )
@@ -272,13 +273,40 @@ fun NavigationGraph(
         composable(
             route = "settings",
             enterTransition = {
+                when (initialState.destination.route) {
+                    "park_selector" -> slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+                    else -> slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+                }
+            },
+            exitTransition = {
+                when (targetState.destination.route) {
+                    "park_selector" -> slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+                    else -> slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+                }
+            }
+        ) {
+            SettingsScreen(navController)
+        }
+        composable(
+            route = "park_selector",
+            enterTransition = {
                 slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
             },
             exitTransition = {
                 slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
-            },
+            }
         ) {
-            SettingsScreen(navController)
+            ParkSelectionScreen(
+                modifier = Modifier,
+                onParkSelect = { id ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set(
+                        "selectedParkId",
+                        id
+                    )
+                    navController.popBackStack()
+                },
+                navController = navController
+            )
         }
 
     }

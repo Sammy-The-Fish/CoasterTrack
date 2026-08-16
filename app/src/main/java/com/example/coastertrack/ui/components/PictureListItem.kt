@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.coastertrack.ui.theme.Dimens
 
 /**
  * list item which contains an image and a name
@@ -38,8 +39,7 @@ fun PictureListItem(
         onClick = { onClick() },
         modifier = modifier
             .fillMaxWidth()
-            .height(120.dp)
-            .padding(5.dp)
+            .height(Dimens.listItemHeight)
             .clip(RoundedCornerShape(25.dp)),
         color = MaterialTheme.colorScheme.surfaceContainer
     ) {

@@ -95,20 +95,22 @@ fun ParkLookUpScreen(
                 ) {
                     items(parks) { item ->
 //                    when (val state = item.pic) {
-                        if (item.pic != null) {
+                        if (item.value.pic != null) {
                             PictureListItem(
-                                name = item.name,
-                                picUrl = item.pic,
+                                name = item.value.name,
+                                picUrl = item.value.pic,
                                 onClick = {
-                                    onItemClick(item.id)
+                                    onItemClick(item.value.id)
                                 },
+                                modifier = Modifier.padding(5.dp)
                             )
                         } else {
                             PictureListItem(
-                                name = item.name,
+                                name = item.value.name,
                                 onClick = {
-                                    onItemClick(item.id)
+                                    onItemClick(item.value.id)
                                 },
+                                modifier = Modifier.padding(5.dp)
                             )
                         }
                     }

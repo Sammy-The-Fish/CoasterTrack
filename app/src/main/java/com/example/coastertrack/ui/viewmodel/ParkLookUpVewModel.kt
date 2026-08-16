@@ -1,5 +1,7 @@
 package com.example.coastertrack.ui.viewmodel
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coastertrack.data.repository.QueueTimeRepository
@@ -20,22 +22,22 @@ import javax.inject.Inject
 // inject constructor using hilt
 class ParkLookUpVewModel @Inject constructor(
     private val queueTimeRepository: QueueTimeRepository,
-    private val rcdbRepository: RcdbRepository
+    private val rcdbRepository: RcdbRepository,
 ) : ViewModel() {
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
 
 
-    private val _parks = MutableStateFlow(listOf<ParkUIModel>())
+    private val _parks = MutableStateFlow(listOf<MutableState<ParkUIModel>>())
 
 
     val parks = combine(searchText, _parks) { text, parks ->
         if (text.isNotBlank()) {
             parks.filter {
-                it.doesMatchSearchQuery(text)
+                it.value.doesMatchSearchQuery(text)
             }
         } else {
-            parks.sortedBy { it.name }
+            parks.sortedBy { it.value.name }
         }
     }.stateIn(
         scope = viewModelScope, // Or another coroutine scope
@@ -48,13 +50,13 @@ class ParkLookUpVewModel @Inject constructor(
     }
 
     init {
-        // get park list on initialisation
+        // get park list on  initialisation
         getParkData()
 
         viewModelScope.launch {
             _parks.collect { parks ->
                 for (park in parks) {
-                    park.pic = getParkPicture(park.id)
+                    park.value.pic = getParkPicture(park.value.id)
                 }
                 _parks.emit(parks)
             }
@@ -64,14 +66,16 @@ class ParkLookUpVewModel @Inject constructor(
     private fun getParkData() {
         viewModelScope.launch {
             val response = queueTimeRepository.getParkList()
-            val responseParks = mutableListOf<ParkUIModel>()
+            val responseParks = mutableListOf<MutableState<ParkUIModel>>()
             response.forEach { company ->
                 company.parks.forEach { park ->
                     responseParks.add(
-                        ParkUIModel(
-                            name = park.name,
-                            id = park.id,
-                            pic = null
+                        mutableStateOf(
+                            ParkUIModel(
+                                name = park.name,
+                                id = park.id,
+                                pic = null
+                            )
                         )
                     )
                 }
