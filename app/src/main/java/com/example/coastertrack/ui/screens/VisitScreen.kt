@@ -17,17 +17,22 @@ import androidx.compose.material.icons.filled.Celebration
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Today
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -63,8 +68,20 @@ fun VisitScreen(
         }
     }
 
+    var showDialogue by remember { mutableStateOf(false) }
+
+
     when (val state = details) {
         is VisitDetailsUiState.Success -> {
+            DeleteDialogue(
+                showDialogue,
+                onDismiss = {
+                    showDialogue = false
+                },
+                onConfirm = {
+                    viewModel.deleteVisit()
+                }
+            )
             DetailsScreen(
                 name = {
                     Text(state.details.name)
@@ -119,7 +136,7 @@ fun VisitScreen(
                         actions = {
                             IconButton(
                                 onClick = {
-                                    viewModel.deleteVisit()
+                                    showDialogue = true
                                 }
                             ) {
                                 Icon(Icons.Default.Delete, "delete visit")
@@ -216,3 +233,25 @@ fun VisitScreen(
 
 }
 
+@Composable
+fun DeleteDialogue(
+    showDialogue: Boolean,
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit,
+) {
+    if (showDialogue) {
+        AlertDialog(onDismissRequest = { onDismiss() }, confirmButton = {
+            TextButton(onClick = { onConfirm() }) {
+                Text(text = "Delete")
+            }
+        }, dismissButton = {
+            TextButton(onClick = { onDismiss() }) {
+                Text(text = "Cancel")
+            }
+        }, title = {
+            Text(text = "Delete Visit?")
+        }, text = {
+            Text(text = "Visit will be permanently removed and cannot be recovered")
+        })
+    }
+}

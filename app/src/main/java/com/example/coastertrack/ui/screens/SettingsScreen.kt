@@ -1,6 +1,5 @@
 package com.example.coastertrack.ui.screens
 
-import android.R
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -24,7 +23,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Restore
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -47,30 +45,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.coastertrack.data.model.preferences.MeasurementSystem
-import com.example.coastertrack.ui.components.ParkSelector
 import com.example.coastertrack.ui.components.PictureListItem
 import com.example.coastertrack.ui.viewmodel.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(navController: NavController) {
-    val radioOptions = listOf("Metric", "UK", "US")
-    val firstOption = radioOptions[0]
-    val lastOption = radioOptions.last()
-
-
     val viewModel = hiltViewModel<SettingsViewModel>()
 
     val selectedOption by viewModel.selectedMeasurementSystem
 
-//    val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0]) }
     var useFeet by viewModel.usesFeet
 
     var showResetDialogue by remember { mutableStateOf(false) }
