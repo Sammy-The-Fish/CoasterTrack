@@ -14,9 +14,9 @@ queue time data from [Queue-Times.com](https://queue-times.com).
 - UI built to Material 3 guidelines
 
 # Screenshots
+<img src="Images/screenshots/StatisticsScreenshotDark.png" width="200" alt="screenshot of app">
+<img src="Images/screenshots/QueuesScreenshotDark.png" width="200" alt="screenshot of app">
 
-![Coaster Track Logo](Images/screenshots/StatisticsScreenshotDark.png)
-![Coaster Track Logo](Images/screenshots/QueuesScreenshotDark.png)
 
 # Requirements
 
