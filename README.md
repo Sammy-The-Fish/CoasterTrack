@@ -14,8 +14,12 @@ queue time data from [Queue-Times.com](https://queue-times.com).
 - UI built to Material 3 guidelines
 
 # Screenshots
+<div>
 <img src="Images/screenshots/StatisticsScreenshotDark.png" width="200" alt="screenshot of app">
 <img src="Images/screenshots/QueuesScreenshotDark.png" width="200" alt="screenshot of app">
+</div>
+
+
 
 
 # Requirements
