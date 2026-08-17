@@ -1,4 +1,4 @@
-![Coaster Track Logo](Images/LogoWithName.png)
+![Coaster Track Logo](Images/LogoDark.png)
 
 # Introduction
 
@@ -15,8 +15,9 @@ queue time data from [Queue-Times.com](https://queue-times.com).
 
 # Screenshots
 <div>
-<img src="Images/screenshots/StatisticsScreenshotDark.png" width="200" alt="screenshot of app">
 <img src="Images/screenshots/QueuesScreenshotDark.png" width="200" alt="screenshot of app">
+<img src="Images/screenshots/StatisticsScreenshotDark.png" width="200" alt="screenshot of app">
+<img src="Images/screenshots/RideScreenshotLight.png" width="200" alt="screenshot of app">
 </div>
 
 
