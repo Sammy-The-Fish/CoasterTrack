@@ -19,7 +19,7 @@ queue time data from [Queue-Times.com](https://queue-times.com).
 <img src="Images/screenshots/StatisticsScreenshotDark.png" width="200" alt="screenshot of app">
 <img src="Images/screenshots/RideScreenshotLight.png" width="200" alt="screenshot of app">
 </div>
-
+more screenshots [here](./Images/screenshots)
 
 
 
@@ -29,9 +29,9 @@ queue time data from [Queue-Times.com](https://queue-times.com).
 
 # Installation
 
-the apk can be found in [releases](https://github.com/Sammy-The-Fish/CoasterTrack/releases)
+the app apk can be found in [releases](https://github.com/Sammy-The-Fish/CoasterTrack/releases)
 
 # Known Bugs
 
-- park images ParkLookupScreen do not load before query is typed
-- parks with no rollercoasters do not load
+- park images in ParkLookupScreen do not load before query is typed
+- parks with no rollercoasters do not load correctly
