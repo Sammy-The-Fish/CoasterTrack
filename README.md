@@ -19,7 +19,8 @@ queue time data from [Queue-Times.com](https://queue-times.com).
 <img src="Images/screenshots/StatisticsScreenshotDark.png" width="200" alt="screenshot of app">
 <img src="Images/screenshots/RideScreenshotLight.png" width="200" alt="screenshot of app">
 </div>
-more screenshots [here](./Images/screenshots)
+
+more screenshots in [Images/screenshots](/Images/screenshots).
 
 
 
